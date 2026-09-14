@@ -1,0 +1,15 @@
+[Unit]
+Description=WiFi Watchdog Service
+Documentation=man:wifi-watchdog(8)
+Wants=network-online.target
+After=NetworkManager.service network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/wifi-watchdog.sh
+Restart=always
+RestartSec=10
+EnvironmentFile=/etc/default/wifi-watchdog
+
+[Install]
+WantedBy=multi-user.target

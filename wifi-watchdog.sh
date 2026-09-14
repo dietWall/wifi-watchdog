@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+INTERFACE="${WATCHDOG_INTERFACE:-wlan0}"
+INTERVAL="${WATCHDOG_INTERVAL:-60}"
+
+log() {
+    logger -t "wifi-watchdog" "$@"
+}
+
+is_connected() {
+    iwgetid -r "$INTERFACE" >/dev/null 2>&1
+}
+
+reset_and_reconnect() {
+    ip link set "$INTERFACE" down
+    sleep 2
+    ip link set "$INTERFACE" up
+    sleep 3
+    nmcli device reconnect "$INTERFACE" 2>/dev/null || true
+    log "Interface $INTERFACE reset and reconnected."
+}
+
+log "WiFi Watchdog started on interface $INTERFACE"
+
+while true; do
+    if ! is_connected; then
+        log "WiFi not connected. Resetting interface $INTERFACE..."
+        reset_and_reconnect
+    fi
+    sleep "$INTERVAL"
+done

@@ -1,0 +1,6 @@
+#!/bin/bash
+set -euo pipefail
+
+systemctl stop wifi-watchdog.service || true
+systemctl disable wifi-watchdog.service || true
+systemctl daemon-reload || true

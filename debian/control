@@ -1,0 +1,10 @@
+Package: wifi-watchdog
+Version: 1.0.0
+Architecture: all
+Maintainer: Admin <admin@example.com>
+Depends: network-manager, wireless-tools, iproute2
+Section: net
+Priority: optional
+Description: WiFi connection watchdog daemon
+ Maintains an active WiFi connection by periodically checking
+ the interface and resetting it when disconnected.

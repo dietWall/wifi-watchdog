@@ -1,0 +1,7 @@
+*.deb
+*.buildinfo
+*.changes
+*.dsc
+debian/wifi-watchdog/
+obj/
+build/

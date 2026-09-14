@@ -1,0 +1,3 @@
+# Defaults for wifi-watchdog
+WATCHDOG_INTERFACE=wlan0
+WATCHDOG_INTERVAL=60
