@@ -1,7 +1,7 @@
 Package: wifi-watchdog
 Version: 1.0.0
 Architecture: all
-Maintainer: Admin <admin@example.com>
+Maintainer: dietWall <dietrich7@gmx.de>
 Depends: network-manager, wireless-tools, iproute2
 Section: net
 Priority: optional

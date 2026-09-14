@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+CONFIG_FILE="${1:-/etc/default/wifi-watchdog}"
+
 systemctl daemon-reload
 systemctl enable wifi-watchdog.service
 systemctl start wifi-watchdog.service

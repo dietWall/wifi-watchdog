@@ -21,6 +21,8 @@ package:
 	install -m755 debian/postinst $(STAGING)/DEBIAN/postinst
 	install -m755 debian/prerm $(STAGING)/DEBIAN/prerm
 
+	sed -i 's|%i|/etc/default/wifi-watchdog|g' $(STAGING)/lib/systemd/system/wifi-watchdog.service
+
 	dpkg-deb --build $(STAGING) $(CURDIR)/$(PACKAGE_NAME)_$(PACKAGE_VERSION)_$(PACKAGE_ARCH).deb
 	@echo "Built $(PACKAGE_NAME)_$(PACKAGE_VERSION)_$(PACKAGE_ARCH).deb"
 

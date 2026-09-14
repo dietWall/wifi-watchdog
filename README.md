@@ -20,8 +20,10 @@ make deb
 sudo dpkg -i wifi-watchdog_1.0.0_all.deb
 ```
 
+The `%i` placeholder in the systemd service is replaced with `/etc/default/wifi-watchdog` during package build.
+
 ## Configuration
-Environment variables (set in `/etc/default/wifi-watchdog`):
+Edit `/etc/default/wifi-watchdog`:
 - `WATCHDOG_INTERFACE` — WiFi interface name (default: `wlan0`)
 - `WATCHDOG_INTERVAL` — Sleep interval in seconds (default: `60`)
 
@@ -30,6 +32,8 @@ Environment variables (set in `/etc/default/wifi-watchdog`):
 sudo systemctl status wifi-watchdog
 sudo journalctl -u wifi-watchdog -f
 ```
+
+The script accepts `-c CONFIG_FILE` to specify the configuration file path.
 
 ## Building the .deb package
 ```bash

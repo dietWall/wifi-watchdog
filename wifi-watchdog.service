@@ -6,10 +6,9 @@ After=NetworkManager.service network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/wifi-watchdog.sh
+ExecStart=/usr/local/bin/wifi-watchdog.sh -c %i
 Restart=always
 RestartSec=10
-EnvironmentFile=/etc/default/wifi-watchdog
 
 [Install]
 WantedBy=multi-user.target

@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+CONFIG_FILE="${1:-}"
+
+if [ -z "$CONFIG_FILE" ]; then
+    echo "Usage: $0 -c /path/to/config" >&2
+    exit 1
+fi
+
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "Config file not found: $CONFIG_FILE" >&2
+    exit 1
+fi
+
+source "$CONFIG_FILE"
 INTERFACE="${WATCHDOG_INTERFACE:-wlan0}"
 INTERVAL="${WATCHDOG_INTERVAL:-60}"
 
