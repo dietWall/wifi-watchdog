@@ -2,6 +2,11 @@
 *.buildinfo
 *.changes
 *.dsc
-debian/wifi-watchdog/
+.debian/
+.build/
+wifi-watchdog-bak/
+__pycache__/
+tests/__pycache__/
+.pytest_cache/
 obj/
 build/

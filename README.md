@@ -35,7 +35,23 @@ sudo journalctl -u wifi-watchdog -f
 
 The script accepts `-c CONFIG_FILE` to specify the configuration file path.
 
+## Multiple Interfaces
+To monitor a second WiFi interface, copy the configuration file and enable a new service instance:
+```bash
+sudo cp /etc/default/wifi-watchdog /etc/default/wifi-watchdog-wlan1
+sudo sed -i 's/wlan0/wlan1/' /etc/default/wifi-watchdog-wlan1
+sudo systemctl enable wifi-watchdog@/etc/default/wifi-watchdog-wlan1.service
+sudo systemctl start wifi-watchdog@/etc/default/wifi-watchdog-wlan1.service
+```
+
 ## Building the .deb package
 ```bash
 make deb
 ```
+
+## Testing
+```bash
+make clean && make deb && pytest tests/
+```
+
+The build test verifies the `.deb` package is produced correctly. Installation tests require sudo access and are skipped in restricted environments.

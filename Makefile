@@ -1,13 +1,11 @@
-.PHONY: deb package clean
+.PHONY: deb clean
 
 PACKAGE_NAME=wifi-watchdog
 PACKAGE_VERSION=1.0.0
 PACKAGE_ARCH=all
-STAGING=$(CURDIR)/debian/$(PACKAGE_NAME)
+STAGING=$(CURDIR)/.build/$(PACKAGE_NAME)
 
-deb: package
-
-package:
+deb:
 	rm -rf $(STAGING)
 	mkdir -p $(STAGING)/DEBIAN
 	mkdir -p $(STAGING)/usr/local/bin
