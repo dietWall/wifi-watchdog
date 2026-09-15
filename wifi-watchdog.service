@@ -6,7 +6,7 @@ After=NetworkManager.service network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/wifi-watchdog.sh -c %i
+ExecStart=/usr/local/bin/wifi-watchdog.sh %i
 Restart=always
 RestartSec=10
 

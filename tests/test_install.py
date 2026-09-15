@@ -42,7 +42,7 @@ def test_service_unit_exists(deb_path, installed):
     )
     assert result.returncode == 0, "Service unit not found"
     assert "wifi-watchdog.sh" in result.stdout
-    assert "-c /etc/default/wifi-watchdog" in result.stdout
+    assert "/etc/default/wifi-watchdog" in result.stdout
 
 
 def test_script_exists(deb_path):
