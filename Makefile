@@ -1,7 +1,7 @@
 .PHONY: deb clean
 
 PACKAGE_NAME=wifi-watchdog
-PACKAGE_VERSION=1.0.0
+PACKAGE_VERSION ?= $(or $(VERSION),0.0.0~dev)
 PACKAGE_ARCH=all
 STAGING=$(CURDIR)/.build/$(PACKAGE_NAME)
 
@@ -16,6 +16,7 @@ deb:
 	install -m644 wifi-watchdog.service $(STAGING)/lib/systemd/system/wifi-watchdog.service
 	install -m644 etc/default/wifi-watchdog $(STAGING)/etc/default/wifi-watchdog
 	install -m644 debian/control $(STAGING)/DEBIAN/control
+	sed -i 's/^Version: .*/Version: $(PACKAGE_VERSION)/' $(STAGING)/DEBIAN/control
 	install -m755 debian/postinst $(STAGING)/DEBIAN/postinst
 	install -m755 debian/prerm $(STAGING)/DEBIAN/prerm
 

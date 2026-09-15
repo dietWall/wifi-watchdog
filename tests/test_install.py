@@ -9,8 +9,8 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 @pytest.fixture(scope="module")
 def deb_path():
     deb_files = glob.glob(os.path.join(PROJECT_ROOT, "wifi-watchdog_*.deb"))
-    assert len(deb_files) == 1, "No .deb package found. Run 'make deb' first."
-    return deb_files[0]
+    assert len(deb_files) >= 1, "No .deb package found. Run 'make deb' first."
+    return max(deb_files, key=os.path.getmtime)
 
 
 @pytest.fixture(scope="module")
