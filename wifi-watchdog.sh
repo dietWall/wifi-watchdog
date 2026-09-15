@@ -22,7 +22,7 @@ log() {
 }
 
 is_connected() {
-    iwgetid -r "$INTERFACE" >/dev/null 2>&1
+    iw dev "$INTERFACE" link 2>/dev/null | grep -q 'SSID'
 }
 
 reset_and_reconnect() {

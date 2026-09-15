@@ -2,7 +2,7 @@ Package: wifi-watchdog
 Version: 1.0.0
 Architecture: all
 Maintainer: dietWall <dietrich7@gmx.de>
-Depends: network-manager, wireless-tools, iproute2
+Depends: network-manager, iw, iproute2
 Section: net
 Priority: optional
 Description: WiFi connection watchdog daemon

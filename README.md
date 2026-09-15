@@ -11,7 +11,7 @@ This service runs as a daemon, checking every minute whether the WiFi interface 
 ## Requirements
 - Linux system with systemd
 - NetworkManager
-- `wireless-tools` (for `iwgetid`)
+- `iw` (for checking WiFi connection status)
 - `iproute2` (for `ip link`)
 
 ## Installation
